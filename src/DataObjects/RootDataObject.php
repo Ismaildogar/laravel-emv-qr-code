@@ -13,7 +13,6 @@ class RootDataObject extends DataObjectContract
 {
     public function __construct()
     {
-        $this->id = null;
         $this->title = 'Root';
         $this->systemName = 'root';
     }
@@ -31,34 +30,7 @@ class RootDataObject extends DataObjectContract
         $data = $this->validateFirstAndLastDataObject();
 
         if (is_null($data['errors'])) {
-            $data = $this->validateChildDataObject();
-        }
-
-        return $data;
-    }
-    
-    /**
-     * Method validateChildDataObject
-     *
-     * @return array
-     */
-    public function validateChildDataObject()
-    {
-        $data = [
-            'success' => false,
-            'result' => null,
-            'errors' => null,
-            'message' => null,
-            'issues' => [],
-        ];
-        
-        foreach ($this->childDataObjects as $childDataObject) {
-            $validateChildDataObjectResponse = $childDataObject->validate();
-            if (!is_null($validateChildDataObjectResponse)) {
-                $data['issues'] = array_merge($data['issues'], $validateChildDataObjectResponse);
-
-                break;
-            }
+            $data = $this->validateChildDataObjects();
         }
 
         return $data;

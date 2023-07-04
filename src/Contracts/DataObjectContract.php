@@ -11,28 +11,28 @@ abstract class DataObjectContract
      *
      * @var string|int
      */
-    protected $id;
+    protected $id = null;
     
     /**
      * title
      *
      * @var string
      */
-    protected $title;
+    protected $title = null;
     
     /**
      * systemName
      *
      * @var string
      */
-    protected $systemName;
+    protected $systemName = null;
     
     /**
      * Data object value
      *
      * @var mixed
      */
-    protected $value;
+    protected $value = null;
     
     /**
      * Validation rules for data object value
@@ -91,15 +91,65 @@ abstract class DataObjectContract
      */
     public function validate()
     {
-        $fieldsArray = ['value' => $this->value];
-        $validationRules = $this->validationRules;
-        $errors = null;
+        $data = [
+            'success' => false,
+            'result' => null,
+            'errors' => null,
+            'message' => null,
+            'issues' => [],
+        ];
 
-        $validator = Validator::make($fieldsArray, $validationRules);
-        if ($validator->fails()) {
-            $errors[$this->systemName] = $validator->errors()->toArray();
+        if (!is_null($this->value)) {
+            $fieldsArray = ['value' => $this->value];
+            $validationRules = $this->validationRules;
+
+            $validator = Validator::make($fieldsArray, $validationRules);
+            if ($validator->fails()) {
+                $data['errors'] = true;
+                $data['issues'][$this->systemName] = $validator->errors()->toArray();
+            }
         }
 
-        return $errors;
+        if (is_null($data['errors']) && count($this->childDataObjects) > 0) {
+            $data = $this->validate();
+        } else {
+            $data = $this->validateChildDataObjects();
+        }
+
+        if (is_null($data['errors'])) {
+            $data['success'] = true;
+        }
+
+        return $data;
+    }
+
+    /**
+     * Method validateChildDataObjects
+     *
+     * @return array
+     */
+    public function validateChildDataObjects()
+    {
+        $data = [
+            'success' => false,
+            'result' => null,
+            'errors' => null,
+            'message' => null,
+            'issues' => [],
+        ];
+        
+        foreach ($this->childDataObjects as $childDataObject) {
+            $validateChildDataObjectResponse = $childDataObject->validate();
+            if (!$validateChildDataObjectResponse['success']) {
+                $data = $validateChildDataObjectResponse;
+                break;
+            }
+        }
+
+        if (is_null($data['errors'])) {
+            $data['success'] = true;
+        }
+
+        return $data;
     }
 }
