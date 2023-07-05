@@ -25,17 +25,6 @@ class RootDataObject extends DataObjectContract
         ];
     }
 
-    /*public function validate()
-    {
-        $data = $this->validateFirstAndLastDataObject();
-
-        if (is_null($data['errors'])) {
-            $data = $this->validateChildDataObjects();
-        }
-
-        return $data;
-    }*/
-
     /**
      * The Payload Format Indicator (ID "00") is the first data object under the root
      * The CRC ID (ID "63") is the last object under the root
@@ -75,7 +64,14 @@ class RootDataObject extends DataObjectContract
 
         return $data;
     }
-
+    
+    /**
+     * generate root representation
+     * validation first and last data objects
+     * validation root data object
+     *
+     * @return array
+     */
     public function generateRootRepresentation()
     {
         $data = $this->validateFirstAndLastDataObject();
