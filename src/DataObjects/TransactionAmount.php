@@ -15,14 +15,11 @@ class TransactionAmount extends DataObjectContract
     public function __construct()
     {
         $this->id = '54';
-        $this->title = 'Transaction Amount';
         $this->systemName = 'transaction_amount';
 
         $this->validationRules = [
             'value' => [
-                'min:1',
-                'max:13',
-                new AlphaNumericSpecial
+                'regex:/^\d{1,13}(\.\d{1,2})?$/',
             ]
         ];
     }

@@ -23,7 +23,7 @@ class PayloadFormatIndicator extends DataObjectContract
                 'required',
                 'numeric',
                 'digits:2',
-                Rule::in(['01'])
+                Rule::in(['01', '02', '03'])
             ]
         ];
     }

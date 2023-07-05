@@ -65,6 +65,26 @@ abstract class DataObjectContract
     }
     
     /**
+     * Method getValue
+     *
+     * @return null|string
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+    
+    /**
+     * Method getId
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+    
+    /**
      * A data object may contain other data objects
      * Add data object to data object
      *

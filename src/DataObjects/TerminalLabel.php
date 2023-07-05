@@ -13,7 +13,6 @@ class TerminalLabel extends DataObjectContract
     public function __construct()
     {
         $this->id = '07';
-        $this->title = 'Terminal Label';
         $this->systemName = 'terminal_label';
 
         $this->validationRules = [
