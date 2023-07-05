@@ -20,8 +20,7 @@ class TransactionCurrency extends DataObjectContract
             'value' => [
                 'required',
                 'numeric',
-                'min:3',
-                'max:3'
+                'digits:3'
             ]
         ];
     }

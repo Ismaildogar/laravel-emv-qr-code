@@ -13,7 +13,6 @@ class StoreLabel extends DataObjectContract
     public function __construct()
     {
         $this->id = '03';
-        $this->title = 'Store Label';
         $this->systemName = 'store_label';
 
         $this->validationRules = [

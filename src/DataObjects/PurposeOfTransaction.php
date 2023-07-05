@@ -13,7 +13,6 @@ class PurposeOfTransaction extends DataObjectContract
     public function __construct()
     {
         $this->id = '08';
-        $this->title = 'Purpose Of Transaction';
         $this->systemName = 'purpose_of_transaction';
 
         $this->validationRules = [

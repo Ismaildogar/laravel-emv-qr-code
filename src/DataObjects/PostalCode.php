@@ -13,7 +13,6 @@ class PostalCode extends DataObjectContract
     public function __construct()
     {
         $this->id = '61';
-        $this->title = 'Postal Code';
         $this->systemName = 'postal_Code';
 
         $this->validationRules = [

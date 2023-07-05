@@ -1,6 +1,9 @@
 # Laravel MU QR code
 
-Generate merchant presented national QR code for MU based on EMV(registered trademark) QR Code Specification for Payment Systems..
+Generate merchant presented national QR code for MU based on EMV®1 QR Code Specification for Payment Systems (EMV QRCPS) – Merchant-Presented Mode published by EMVCo.
+
+EMV® is a registered trademark in the U.S. and other countries and an unregistered trademark elsewhere. The EMV trademark is owned by EMVCo, LLC.
+QR Code is a registered trademark of DENSO WAVE
 
 ## Features
 * Table structure to keep access logs

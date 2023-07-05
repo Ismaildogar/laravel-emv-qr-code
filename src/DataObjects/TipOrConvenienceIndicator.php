@@ -17,8 +17,7 @@ class TipOrConvenienceIndicator extends DataObjectContract
 
         $this->validationRules = [
             'value' => [
-                'min:2',
-                'max:2',
+                'digits:2',
                 'numeric'
             ]
         ];

@@ -13,7 +13,6 @@ class MobileNumber extends DataObjectContract
     public function __construct()
     {
         $this->id = '02';
-        $this->title = 'Mobile Number';
         $this->systemName = 'mobile_number';
 
         $this->validationRules = [

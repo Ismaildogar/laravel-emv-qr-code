@@ -13,7 +13,6 @@ class PayeeParticipantCode extends DataObjectContract
     public function __construct()
     {
         $this->id = '01';
-        $this->title = 'Payee Participant Code';
         $this->systemName = 'payee_participant_code';
 
         $this->validationRules = [

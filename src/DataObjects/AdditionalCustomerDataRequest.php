@@ -14,7 +14,6 @@ class AdditionalCustomerDataRequest extends DataObjectContract
     public function __construct()
     {
         $this->id = '09';
-        $this->title = 'Additional Customer Data Request';
         $this->systemName = 'additional_customer_data_request';
 
         $this->validationRules = [

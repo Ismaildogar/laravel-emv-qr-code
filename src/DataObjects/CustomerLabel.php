@@ -13,7 +13,6 @@ class CustomerLabel extends DataObjectContract
     public function __construct()
     {
         $this->id = '06';
-        $this->title = 'Customer Label';
         $this->systemName = 'customer_label';
 
         $this->validationRules = [

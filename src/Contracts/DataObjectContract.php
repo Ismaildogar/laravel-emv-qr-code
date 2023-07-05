@@ -4,31 +4,35 @@ namespace aliirfaan\LaravelMuQrCode\Contracts;
 
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * DataObjectContract
+ */
 abstract class DataObjectContract
 {
     /**
-     * id
+     * The first field is an identifier (ID) by which the data object can be reference
+     * The ID is coded as a two-digit numeric value, when a value ranging from "00" to "99"
      *
-     * @var string|int
+     * @var string
      */
     protected $id = null;
     
     /**
-     * title
+     * Whether data object is root element
      *
-     * @var string
+     * @var bool
      */
-    protected $title = null;
+    protected $isRoot = false;
     
     /**
-     * systemName
+     * systemName to show errors
      *
      * @var string
      */
     protected $systemName = null;
     
     /**
-     * Data object value
+     * Data object value - The value field has a minimum length of one character and maximum length of 99 characters
      *
      * @var mixed
      */
@@ -61,9 +65,10 @@ abstract class DataObjectContract
     }
     
     /**
-     * Add data object
+     * A data object may contain other data objects
+     * Add data object to data object
      *
-     * @param $template $template [explicite description]
+     * @param DataObjectContract $dataObject
      *
      * @return void
      */
@@ -111,8 +116,6 @@ abstract class DataObjectContract
         }
 
         if (is_null($data['errors']) && count($this->childDataObjects) > 0) {
-            $data = $this->validate();
-        } else {
             $data = $this->validateChildDataObjects();
         }
 
@@ -151,5 +154,45 @@ abstract class DataObjectContract
         }
 
         return $data;
+    }
+    
+    /**
+     * Get length of the value
+     * The length is coded as a two-digit numeric value, with a value ranging from "01" to "99"
+     *
+     * Left pad with zero so that we get results like '01, 02' in case length is < 10
+     *
+     * @return string
+     */
+    public function getValueLength()
+    {
+        return str_pad(strlen($this->value), 2, '0', STR_PAD_LEFT);
+    }
+    
+    /**
+     * A data object is represented as an ID / Length / Value combination
+     *
+     * @return null|string
+     */
+    public function getRepresentation()
+    {
+        $representation = null;
+                
+        if (count($this->childDataObjects) > 0) {
+            $childrenRepresenation = null;
+            foreach ($this->childDataObjects as $childDataObject) {
+                $childrenRepresenation .= $childDataObject->getRepresentation();
+            }
+            $this->setValue($childrenRepresenation);
+        }
+
+        if (!is_null($this->value)) {
+            $representation = $this->value;
+            if (!$this->isRoot) {
+                $representation = $this->id . $this->getValueLength() . $representation;
+            }
+        }
+
+        return $representation;
     }
 }

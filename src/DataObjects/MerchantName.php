@@ -13,7 +13,6 @@ class MerchantName extends DataObjectContract
     public function __construct()
     {
         $this->id = '59';
-        $this->title = 'Merchant Name';
         $this->systemName = 'merchant_name';
 
         $this->validationRules = [

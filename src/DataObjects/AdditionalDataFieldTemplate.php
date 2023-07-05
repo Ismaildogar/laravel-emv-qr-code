@@ -6,21 +6,20 @@ use aliirfaan\LaravelMuQrCode\Contracts\DataObjectContract;
 use aliirfaan\LaravelMuQrCode\Rules\AlphaNumericSpecial;
 
 /**
- * MerchantName
+ * AdditionalDataField
  */
-class MerchantCity extends DataObjectContract
+class AdditionalDataFieldTemplate extends DataObjectContract
 {
     public function __construct()
     {
-        $this->id = '60';
-        $this->systemName = 'merchant_city';
+        $this->id = '62';
+        $this->systemName = 'additional_data_field';
 
         $this->validationRules = [
             'value' => [
-                'required',
                 'min:1',
-                'max:15',
-                new AlphaNumericSpecial
+                'max:99',
+                new AlphaNumericSpecial,
             ]
         ];
     }

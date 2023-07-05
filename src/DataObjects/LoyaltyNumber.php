@@ -13,7 +13,6 @@ class LoyaltyNumber extends DataObjectContract
     public function __construct()
     {
         $this->id = '04';
-        $this->title = 'Loyalty Number';
         $this->systemName = 'loyalty_number';
 
         $this->validationRules = [

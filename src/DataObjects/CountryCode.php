@@ -13,7 +13,6 @@ class CountryCode extends DataObjectContract
     public function __construct()
     {
         $this->id = '58';
-        $this->title = 'Country Code';
         $this->systemName = 'country_code';
         $this->value = 'MU';
 

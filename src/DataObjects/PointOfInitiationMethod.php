@@ -15,7 +15,6 @@ class PointOfInitiationMethod extends DataObjectContract
     public function __construct()
     {
         $this->id = '01';
-        $this->title = 'Point of Initiation Method';
         $this->systemName = 'point_of_initiation_method';
 
         $this->validationRules = [

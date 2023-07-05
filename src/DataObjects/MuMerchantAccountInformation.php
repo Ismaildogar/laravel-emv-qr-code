@@ -13,7 +13,6 @@ class MuMerchantAccountInformation extends DataObjectContract
     public function __construct()
     {
         $this->id = '26';
-        $this->title = 'Mu Merchant Account Information';
         $this->systemName = 'mu_merchant_account_information';
 
         $this->validationRules = [

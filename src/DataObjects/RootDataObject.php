@@ -3,6 +3,7 @@
 namespace aliirfaan\LaravelMuQrCode\DataObjects;
 
 use aliirfaan\LaravelMuQrCode\Contracts\DataObjectContract;
+use aliirfaan\LaravelMuQrCode\Rules\AlphaNumericSpecial;
 use aliirfaan\LaravelMuQrCode\DataObjects\PayloadFormatIndicator;
 use aliirfaan\LaravelMuQrCode\DataObjects\Crc;
 
@@ -13,20 +14,19 @@ class RootDataObject extends DataObjectContract
 {
     public function __construct()
     {
-        $this->title = 'Root';
+        $this->isRoot = true;
         $this->systemName = 'root';
+        $this->validationRules = [
+            'value' => [
+                'min:1',
+                'max:512',
+                new AlphaNumericSpecial
+            ]
+        ];
     }
 
-    public function validate()
+    /*public function validate()
     {
-        $data = [
-            'success' => false,
-            'result' => null,
-            'errors' => null,
-            'message' => null,
-            'issues' => [],
-        ];
-
         $data = $this->validateFirstAndLastDataObject();
 
         if (is_null($data['errors'])) {
@@ -34,7 +34,7 @@ class RootDataObject extends DataObjectContract
         }
 
         return $data;
-    }
+    }*/
 
     /**
      * The Payload Format Indicator (ID "00") is the first data object under the root
@@ -71,6 +71,24 @@ class RootDataObject extends DataObjectContract
         if (is_null($data['errors']) && (!$lastDataObject instanceof Crc)) {
             $data['errors'] = true;
             $data['issues'][$this->systemName] = 'The CRC is not the last object under the root.';
+        }
+
+        return $data;
+    }
+
+    public function generateRootRepresentation()
+    {
+        $data = $this->validateFirstAndLastDataObject();
+        $representation = null;
+
+        if (is_null($data['errors'])) {
+            $representation = $this->getRepresentation();
+
+            $data = $this->validate();
+            if (is_null($data['errors'])) {
+                $data['success'] = true;
+                $data['result'] = $representation;
+            }
         }
 
         return $data;

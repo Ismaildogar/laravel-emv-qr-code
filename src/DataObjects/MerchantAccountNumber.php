@@ -13,13 +13,12 @@ class MerchantAccountNumber extends DataObjectContract
     public function __construct()
     {
         $this->id = '02';
-        $this->title = 'Merchant Account Number';
         $this->systemName = 'merchant_account_number';
 
         $this->validationRules = [
             'value' => [
                 'required',
-                'min:38',
+                'min:1',
                 'max:38',
                 new AlphaNumericSpecial
             ]

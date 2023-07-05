@@ -13,7 +13,6 @@ class Crc extends DataObjectContract
     public function __construct()
     {
         $this->id = '63';
-        $this->title = 'CRC';
         $this->systemName = 'crc';
 
         $this->validationRules = [

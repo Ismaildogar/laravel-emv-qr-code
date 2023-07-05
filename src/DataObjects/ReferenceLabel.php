@@ -13,7 +13,6 @@ class ReferenceLabel extends DataObjectContract
     public function __construct()
     {
         $this->id = '05';
-        $this->title = 'Reference Label';
         $this->systemName = 'reference_label';
 
         $this->validationRules = [

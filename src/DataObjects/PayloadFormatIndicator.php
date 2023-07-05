@@ -15,7 +15,6 @@ class PayloadFormatIndicator extends DataObjectContract
     public function __construct()
     {
         $this->id = '00';
-        $this->title = 'Payload Format Indicator';
         $this->systemName = 'payload_format_indicator';
         $this->value = '01';
 
