@@ -1,6 +1,6 @@
 {
     "name": "aliirfaan/laravel-mu-qr-code",
-    "description": "Generate merchant presented national QR code for MU based on EMV(registered trademark) QR Code Specification for Payment Systems.",
+    "description": "Generate textual representation of merchant presented national QR code for MU based on EMV(registered trademark) QR Code Specification for Payment Systems.",
     "type": "library",
     "license": "MIT",
     "authors": [
