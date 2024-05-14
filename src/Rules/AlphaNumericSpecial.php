@@ -1,24 +1,31 @@
-<?php
-
+<?php 
 namespace aliirfaan\LaravelMuQrCode\Rules;
 
 use Closure;
-use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Contracts\Validation\Rule;
 
-/**
- * Values that can be represented by the Common Character Set as defined in [EMV Book 4]. The Alphanumeric Special alphabet includes ninety-six (96) characters in total and includes the numeric alphabet and punctuation.
- */
-class AlphaNumericSpecial implements ValidationRule
+class AlphaNumericSpecial implements Rule
 {
     /**
-     * Run the validation rule.
+     * Determine if the validation rule passes.
      *
-     * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
      */
-    public function validate(string $attribute, mixed $value, Closure $fail): void
+    public function passes($attribute, $value)
     {
-        if (preg_match('/[^\x20-\x7e]/', $value)) {
-            $fail('The :attribute is not valid.');
-        }
+        // Perform validation logic
+        return !preg_match('/[^\x20-\x7e]/', $value);
+    }
+
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return 'The :attribute is not valid.';
     }
 }
