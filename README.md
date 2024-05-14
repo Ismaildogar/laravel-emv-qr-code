@@ -17,7 +17,7 @@ QR Code is a registered trademark of DENSO WAVE
 ## Requirements
 
 * [Composer](https://getcomposer.org/)
-* [Laravel 10.x +](http://laravel.com/)
+* [Laravel 8.x +](http://laravel.com/)
 
 ## Installation
 
