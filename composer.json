@@ -1,23 +1,23 @@
 {
-    "name": "aliirfaan/laravel-mu-qr-code",
+    "name": "ismaildogar/laravel-emv-qr-code",
     "description": "Generate textual representation of merchant presented national QR code for MU based on EMV(registered trademark) QR Code Specification for Payment Systems.",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "aliirfaan",
+            "name": "ismaildogar",
             "email": "aliirfaan.freelance@gmail.com"
         }
     ],
     "autoload": {
         "psr-4": {
-            "aliirfaan\\LaravelMuQrCode\\": "src/"
+            "ismaildoger\\LaravelMuQrCode\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "aliirfaan\\LaravelMuQrCode\\LaravelMuQrCodeProvider"
+                "ismaildogar\\LaravelMuQrCode\\LaravelMuQrCodeProvider"
             ]
         }
     }
