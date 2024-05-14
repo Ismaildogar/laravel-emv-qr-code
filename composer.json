@@ -5,19 +5,19 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "ismaildogar",
+            "name": "Ismaildogar",
             "email": "aliirfaan.freelance@gmail.com"
         }
     ],
     "autoload": {
         "psr-4": {
-            "ismaildoger\\LaravelMuQrCode\\": "src/"
+            "Ismaildogar\\LaravelMuQrCode\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "ismaildogar\\LaravelMuQrCode\\LaravelMuQrCodeProvider"
+                "Ismaildogar\\LaravelMuQrCode\\LaravelMuQrCodeProvider"
             ]
         }
     }
