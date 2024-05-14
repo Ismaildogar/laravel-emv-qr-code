@@ -24,13 +24,13 @@ QR Code is a registered trademark of DENSO WAVE
 You can install this package on an existing Laravel project with using composer:
 
 ```bash
- $ composer require aliirfaan/laravel-mu-qr-code
+ $ composer require ismaildogar/laravel-emv-qr-code
 ```
 
 Register the ServiceProvider by editing **config/app.php** file and adding to providers array:
 
 ```php
-  aliirfaan\LaravelMuQrCode\LaravelMuQrCodeProvider::class,
+  ismaildogar\LaravelMuQrCode\LaravelMuQrCodeProvider::class,
 ```
 ## Usage
 
