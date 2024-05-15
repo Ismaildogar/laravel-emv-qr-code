@@ -5,7 +5,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Ismaildogar",
+            "name": "ismaildogar",
             "email": "aliirfaan.freelance@gmail.com"
         }
     ],
@@ -17,7 +17,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Ismaildogar\\LaravelMuQrCode\\LaravelMuQrCodeProvider"
+                "ismaildogar\\LaravelMuQrCode\\LaravelMuQrCodeProvider"
             ]
         }
     }
